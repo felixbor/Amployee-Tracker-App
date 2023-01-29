@@ -29,24 +29,30 @@ INSERT INTO  Department (department_name)
 
 -- add role--
 
+INSERT INTO role (title, salary, department_id) VALUES ('Accountant', 999900, 1)
+
+--add employee--
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Petro','Col', 2, 2)
 
 
-/* group employee by department*/
+-- group employee by department--
 SELECT
 department.department_name,
 concat(first_name, ' ', last_name) as FullNAme
 FROM employee
 left JOIN role
-  ON role.id = employee.role_id
- left JOIN department
-  ON role.department_id = department.id;
-/*budget by department */
+ON role.id = employee.role_id
+left JOIN department
+ON role.department_id = department.id;
+
+
+--budget by department --
   SELECT
  department.department_name,
 sum(role.salary)
 FROM employee
 left JOIN role
-  ON role.id = employee.role_id
- left JOIN department
-  ON role.department_id = department.id
-  group by department.department_name
+ON role.id = employee.role_id
+left JOIN department
+ON role.department_id = department.id
+group by department.department_name
