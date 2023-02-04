@@ -1,7 +1,7 @@
 -- Queries  for all prompt options--
 
 
---view AllDepartments--
+-- view AllDepartments--
 SELECT * FROM department
 
 
@@ -12,7 +12,7 @@ FROM role
 JOIN  department 
 ON role.department_id= department.id
 
---view ALLEmployees--
+-- view ALLEmployees--
 SELECT employee.id,
 concat(employee.first_name, ' ',
 employee.last_name) as Employee_Name,
@@ -26,7 +26,7 @@ JOIN department ON role.department_id = department.id
 LEFT JOIN employee AS manager ON employee.manager_id = manager.id
 ORDER By employee.id
 
---add deparment--
+-- add deparment--
 INSERT INTO  Department (department_name)
    VALUES (?)
 
@@ -34,7 +34,7 @@ INSERT INTO  Department (department_name)
 
 INSERT INTO role (title, salary, department_id) VALUES ('Accountant', 999900, 1)
 
---add employee--
+-- add employee--
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Petro','Col', 2, 2)
 
 
@@ -45,7 +45,7 @@ JOIN role ON role.id = employee.role_id
 JOIN department ON role.department_id = department.id
 
 
---budget by department --
+-- budget by department --
   SELECT
  department.department_name,
 sum(role.salary)
