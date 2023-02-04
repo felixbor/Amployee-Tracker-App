@@ -1,4 +1,7 @@
----view AllDepartments--
+-- Queries  for all prompt options--
+
+
+--view AllDepartments--
 SELECT * FROM department
 
 
@@ -39,7 +42,7 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Petro
 SELECT  department.department_name, 
   concat(first_name, ' ', last_name) as FullNAme  FROM employee 
 JOIN role ON role.id = employee.role_id 
- JOIN department ON role.department_id = department.id
+JOIN department ON role.department_id = department.id
 
 
 --budget by department --

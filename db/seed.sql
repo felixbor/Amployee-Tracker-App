@@ -1,4 +1,4 @@
--- values for departments table --
+-- values for department table --
 INSERT INTO department (department_name)
  VALUES 
 ('Engineer'),
@@ -23,7 +23,7 @@ VALUES
 
 
 
--- values for employees table --
+-- values for employee table --
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
 VALUES 
 ('David', 'Tong', 1, null),

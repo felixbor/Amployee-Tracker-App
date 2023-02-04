@@ -2,12 +2,12 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 
-
+//establishing connection with data base
 const DbConnection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: 'Crbkta',
+  password: 'yourPassword',
   database: 'company_db',
 }
 );
@@ -17,7 +17,7 @@ DbConnection.connect(err => {
   console.log("Server is running");
   StartApp()
 });
-
+// establishing  start app function that starts prompts
 StartApp =()=>{
   inquirer.prompt({
     message: 'What would you like to do today? for exit Press ^C',
@@ -75,7 +75,7 @@ StartApp =()=>{
 };
 
 
-
+// view all department function
 
 const AllDepartments=()=>{ 
   DbConnection.query('SELECT * FROM department',function(err,result){
@@ -86,7 +86,7 @@ const AllDepartments=()=>{
 }
 
 
-
+// view all roles function
 const AllRoles=()=>{ 
   DbConnection.query(`SELECT role.id ,
   role.title AS JOB_TITLE, department.department_name, role.salary
@@ -100,7 +100,7 @@ const AllRoles=()=>{
 //console.log("view Roles")
 }
 
-
+// view all employees function
 
 const AllEmployees=()=>{ 
   DbConnection.query(`SELECT employee.id,
@@ -122,6 +122,7 @@ const AllEmployees=()=>{
       
     }
 
+    // add department function
 const AddDepartment=()=>{ 
   inquirer.prompt(
     {
@@ -148,7 +149,7 @@ const AddDepartment=()=>{
 }
 
 
-
+// add role function
 const AddRole=()=>{  
   inquirer.prompt([
       {   name: 'Role',
@@ -191,7 +192,7 @@ const AddRole=()=>{
 
  }
 
-
+// add employee function
  const AddEmployee=()=>{
   inquirer.prompt([
     {
@@ -224,7 +225,7 @@ const AddRole=()=>{
     })
 };
      
-
+// update employee role function
 const UpdateEmpRole=()=>{ 
   inquirer.prompt([
     {
@@ -247,7 +248,7 @@ const UpdateEmpRole=()=>{
 }
       
   
-
+//  view employees grouped by department function
 const EmpByDepartment =()=>{
   DbConnection.query(`SELECT  department.department_name, 
   concat(first_name, ' ', last_name) as FullNAme  FROM employee 
@@ -261,7 +262,7 @@ const EmpByDepartment =()=>{
 } 
 
 
-
+// View budget by department
 const DepartmentBudget =()=>{
   DbConnection.query(`SELECT
   department.department_name,
