@@ -7,6 +7,7 @@ CREATE TABLE department (
     department_name VARCHAR(30) NOT NULL
 );
 
+
 CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),

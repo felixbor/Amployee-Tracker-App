@@ -36,14 +36,10 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Petro
 
 
 -- group employee by department--
-SELECT
-department.department_name,
-concat(first_name, ' ', last_name) as FullNAme
-FROM employee
-left JOIN role
-ON role.id = employee.role_id
-left JOIN department
-ON role.department_id = department.id;
+SELECT  department.department_name, 
+  concat(first_name, ' ', last_name) as FullNAme  FROM employee 
+JOIN role ON role.id = employee.role_id 
+ JOIN department ON role.department_id = department.id
 
 
 --budget by department --

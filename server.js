@@ -251,8 +251,8 @@ const UpdateEmpRole=()=>{
 const EmpByDepartment =()=>{
   DbConnection.query(`SELECT  department.department_name, 
   concat(first_name, ' ', last_name) as FullNAme  FROM employee 
-  LEFT JOIN role ON role.id = employee.role_id 
-  LEFT JOIN department ON role.department_id = department.id`,function(err,result){
+ JOIN role ON role.id = employee.role_id 
+ JOIN department ON role.department_id = department.id`,function(err,result){
     console.table(result)
     console.log("view Employees")
       StartApp()
